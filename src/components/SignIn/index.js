@@ -15,18 +15,23 @@ const SignInPage = () => (
     <SignUpLink />
   </div>
 );
+
 const INITIAL_STATE = {
   email: "",
   password: "",
   error: null
 };
+
 class SignInFormBase extends Component {
   constructor(props) {
     super(props);
+
     this.state = { ...INITIAL_STATE };
   }
+
   onSubmit = event => {
     const { email, password } = this.state;
+
     this.props.firebase
       .doSignInWithEmailAndPassword(email, password)
       .then(() => {
@@ -36,14 +41,18 @@ class SignInFormBase extends Component {
       .catch(error => {
         this.setState({ error });
       });
+
     event.preventDefault();
   };
+
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
+
   render() {
     const { email, password, error } = this.state;
     const isInvalid = password === "" || email === "";
+
     return (
       <form onSubmit={this.onSubmit}>
         <input
@@ -68,9 +77,11 @@ class SignInFormBase extends Component {
     );
   }
 }
+
 const SignInForm = compose(
   withRouter,
   withFirebase
 )(SignInFormBase);
+
 export default SignInPage;
 export { SignInForm };
