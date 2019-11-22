@@ -121,6 +121,8 @@ class SignInFacebookBase extends Component {
         this.props.history.push(ROUTES.HOME);
       })
       .catch(error => this.setState({ error }));
+
+    event.preventDefault();
   };
 
   render() {

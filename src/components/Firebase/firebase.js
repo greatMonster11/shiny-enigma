@@ -35,8 +35,7 @@ class Firebase {
 
   doSignInWithFacebook = () => this.auth.signInWithPopup(this.facebookProvider);
 
-  doSignInWithTwitter = () =>
-    this.auth.signInWithPopup(this.doSignInWithTwitter);
+  doSignInWithTwitter = () => this.auth.signInWithPopup(this.twitterProvider);
 
   doSignOut = () => this.auth.signOut();
 
